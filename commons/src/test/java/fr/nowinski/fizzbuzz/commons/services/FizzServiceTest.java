@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import fr.nowinski.fizzbuzz.commons.dao.StatisticRepository;
-import fr.nowinski.fizzbuzz.commons.dto.Page;
+import fr.nowinski.fizzbuzz.commons.dto.PageDto;
 import fr.nowinski.fizzbuzz.commons.model.Statistic;
 
 @SpringBootTest
@@ -48,7 +48,7 @@ class FizzServiceTest {
 		final int q = limit / lcm(int1, int2);
 		final int q1 = limit / int1 - q;
 		final int q2 = limit / int2 - q;
-		final Page page = new Page(int1, int2, str1, str2, limit);
+		final PageDto page = new PageDto(int1, int2, str1, str2, limit);
 
 		final List<String> fizzbuzz = this.fizzService.getFizzBuzzList(page);
 		logger.info("int1 {}, int2 {}, limit {}", int1, int2, limit);
@@ -65,9 +65,9 @@ class FizzServiceTest {
 
 	@RepeatedTest(10)
 	void testCountFizzBuzzList() {
-		final Page page = new Page(1, 2, "toto", "tata", 100);
-		final Page page2 = new Page(1, 5, "toto", "tata", 100);
-		final Page page3 = new Page(1, 9, "toto", "tata", 100);
+		final PageDto page = new PageDto(1, 2, "toto", "tata", 100);
+		final PageDto page2 = new PageDto(1, 5, "toto", "tata", 100);
+		final PageDto page3 = new PageDto(1, 9, "toto", "tata", 100);
 		final int limit = r.nextInt(99) + 1;
 		final int limit2 = r.nextInt(99) + 1;
 

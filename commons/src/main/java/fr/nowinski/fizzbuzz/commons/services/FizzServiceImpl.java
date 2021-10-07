@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.nowinski.fizzbuzz.commons.dao.StatisticRepository;
-import fr.nowinski.fizzbuzz.commons.dto.Page;
-import fr.nowinski.fizzbuzz.commons.model.Statistic;
+import fr.nowinski.fizzbuzz.commons.dto.PageDto;
+import fr.nowinski.fizzbuzz.commons.dto.StatisticDto;
 
 @Service
 public class FizzServiceImpl implements FizzService {
@@ -17,7 +17,7 @@ public class FizzServiceImpl implements FizzService {
 	private StatisticRepository statisticRepository;
 
 	@Override
-	public List<String> getFizzBuzzList(final Page page) {
+	public List<String> getFizzBuzzList(final PageDto page) {
 		// sauvegarde de la requete pour les stats avec +1
 		this.statisticRepository.save(
 				this.statisticRepository.findById(page.toStatistic().getId()).orElseGet(page::toStatistic).addCount());
@@ -39,7 +39,7 @@ public class FizzServiceImpl implements FizzService {
 	}
 
 	@Override
-	public List<Statistic> getStatistic() {
+	public List<StatisticDto> getStatistic() {
 		return this.statisticRepository.getMaxQuaryUse();
 	}
 

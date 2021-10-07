@@ -1,14 +1,24 @@
 package fr.nowinski.fizzbuzz.commons.model;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
-public class Statistic {
+@Getter
+@Setter
+@NoArgsConstructor
+public class Statistic implements Serializable {
 
-	public Statistic() {
-
-	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 758120552964978270L;
 
 	/**
 	 * Constructeur pour initaliser une statistique
@@ -31,22 +41,6 @@ public class Statistic {
 	private StatisticId id;
 
 	private int count = 0;
-
-	public StatisticId getId() {
-		return this.id;
-	}
-
-	public void setId(StatisticId id) {
-		this.id = id;
-	}
-
-	public int getCount() {
-		return this.count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
 
 	public Statistic addCount() {
 		this.count++;
