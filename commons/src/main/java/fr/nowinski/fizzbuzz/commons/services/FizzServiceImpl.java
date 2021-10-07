@@ -19,12 +19,12 @@ public class FizzServiceImpl implements FizzService {
 	@Override
 	public List<String> getFizzBuzzList(final Page page) {
 		// sauvegarde de la requete pour les stats avec +1
-		this.statisticRepository.save(this.statisticRepository.findById(page.toStatistic().getId())
-				.orElseGet(() -> page.toStatistic()).addCount());
+		this.statisticRepository.save(
+				this.statisticRepository.findById(page.toStatistic().getId()).orElseGet(page::toStatistic).addCount());
 
 		final List<String> list = new ArrayList<>();
 		for (int i = 1; i <= page.getLimit(); i++) {
-			if (i % (page.getInt1() * page.getInt2()) == 0) {
+			if (i % page.getInt1() == 0 && i % page.getInt2() == 0) {
 				list.add(page.getStr1() + page.getStr2());
 			} else if (i % page.getInt1() == 0) {
 				list.add(page.getStr1());

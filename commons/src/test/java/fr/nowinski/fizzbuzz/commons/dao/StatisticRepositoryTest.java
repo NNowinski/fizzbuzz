@@ -13,7 +13,7 @@ import fr.nowinski.fizzbuzz.commons.model.StatisticId;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class StatisticRepositoryTest {
+class StatisticRepositoryTest {
 
 	@Autowired
 	private StatisticRepository statisticRepository;
@@ -24,7 +24,7 @@ public class StatisticRepositoryTest {
 	}
 
 	@Test
-	public void saveStatistic() {
+	void saveStatistic() {
 		final StatisticId id = new StatisticId(1, 2, "toto", "tata", 5);
 
 		this.statisticRepository.save(new Statistic(id));
