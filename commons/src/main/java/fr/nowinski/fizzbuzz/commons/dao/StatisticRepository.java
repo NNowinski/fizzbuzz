@@ -11,7 +11,7 @@ import fr.nowinski.fizzbuzz.commons.model.StatisticId;
 
 public interface StatisticRepository extends CrudRepository<Statistic, StatisticId> {
 
-	@Query("SELECT new StatisticDto(s) FROM Statistic s WHERE s.count = (SELECT MAX(s2.count) FROM Statistic s2)")
+	@Query("SELECT new fr.nowinski.fizzbuzz.commons.dto.StatisticDto(s) FROM Statistic s WHERE s.count = (SELECT MAX(s2.count) FROM Statistic s2)")
 	List<StatisticDto> getMaxQuaryUse();
 
 }

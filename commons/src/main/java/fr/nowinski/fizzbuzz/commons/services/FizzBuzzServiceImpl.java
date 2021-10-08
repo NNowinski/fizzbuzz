@@ -11,18 +11,18 @@ import fr.nowinski.fizzbuzz.commons.dto.PageDto;
 import fr.nowinski.fizzbuzz.commons.dto.StatisticDto;
 
 @Service
-public class FizzServiceImpl implements FizzService {
+public class FizzBuzzServiceImpl implements FizzBuzzService {
 
 	@Autowired
 	private StatisticRepository statisticRepository;
 
 	@Override
-	public List<String> getFizzBuzzList(final PageDto page) {
+	public List<Object> getFizzBuzzList(final PageDto page) {
 		// sauvegarde de la requete pour les stats avec +1
 		this.statisticRepository.save(
 				this.statisticRepository.findById(page.toStatistic().getId()).orElseGet(page::toStatistic).addCount());
 
-		final List<String> list = new ArrayList<>();
+		final List<Object> list = new ArrayList<>();
 		for (int i = 1; i <= page.getLimit(); i++) {
 			if (i % page.getInt1() == 0 && i % page.getInt2() == 0) {
 				list.add(page.getStr1() + page.getStr2());
@@ -31,7 +31,7 @@ public class FizzServiceImpl implements FizzService {
 			} else if (i % page.getInt2() == 0) {
 				list.add(page.getStr2());
 			} else {
-				list.add(String.valueOf(i));
+				list.add(i);
 			}
 
 		}
@@ -39,7 +39,7 @@ public class FizzServiceImpl implements FizzService {
 	}
 
 	@Override
-	public List<StatisticDto> getStatistic() {
+	public List<StatisticDto> getStatistics() {
 		return this.statisticRepository.getMaxQuaryUse();
 	}
 
