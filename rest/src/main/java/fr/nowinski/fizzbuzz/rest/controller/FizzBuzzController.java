@@ -28,7 +28,7 @@ public class FizzBuzzController {
 	@Operation(summary = "Get a list of strings with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2 are replaced by str1str2")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "List of numbers and strings", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = List.class), examples = {
-					@ExampleObject(description = "1,2,fizz,4,buzz,fizz,7,8,fizz,buzz,11,fizz,13,14,fizzbuzz,16,...") }) }) })
+					@ExampleObject(value = "1,2,fizz,4,buzz,fizz,7,8,fizz,buzz,11,fizz,13,14,fizzbuzz,16,...") }) }) })
 	@GetMapping("/fizzbuzz")
 	@ResponseStatus(HttpStatus.OK)
 	public List<Object> getFizzBuzz(@RequestParam(defaultValue = "3", required = true) Integer int1,
@@ -46,7 +46,7 @@ public class FizzBuzzController {
 	@Operation(summary = "Get the parameters corresponding to the most used request, as well as the number of hits for this request")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "The most frequent request has been", content = {
-					@Content(mediaType = "application/json") }) })
+					@Content(mediaType = "application/json", schema = @Schema(implementation = StatisticDto.class)) }) })
 	@GetMapping("/statistics")
 	@ResponseStatus(HttpStatus.OK)
 	public List<StatisticDto> getStatistic() {
