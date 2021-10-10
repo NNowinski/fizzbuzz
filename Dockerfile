@@ -4,10 +4,14 @@ RUN apt-get update -yq \
 && apt install openjdk-17-jdk -y \
 && apt-get install maven -y
 
-ADD . /app/
-WORKDIR /app
+RUN mkdir /app
+
+ADD . /sources/
+WORKDIR /sources
 RUN mvn clean package -Pprod -DskipTests
-WORKDIR /app/rest/target
+RUN mv /sources/rest/target/fizzbuzz-app.jar /app/fizzbuzz-app.jar
+
+WORKDIR /app
 RUN jar -xf fizzbuzz-app.jar
 
 EXPOSE 8080
