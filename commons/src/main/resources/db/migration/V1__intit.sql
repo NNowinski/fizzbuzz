@@ -1,9 +1,10 @@
-create table statistic (
-	int1 integer not null,
-	int2 integer not null,
-	limit integer not null,
-	str1 varchar(255) not null,
-	str2 varchar(255) not null,
-	count integer not null,
-	primary key (int1, int2, limit, str1, str2)
-)
+CREATE TABLE statistic
+  (
+     number_1      INTEGER NOT NULL,
+     number_2      INTEGER NOT NULL,
+     limit_of_list INTEGER NOT NULL,
+     str1          VARCHAR(255) NOT NULL,
+     str2          VARCHAR(255) NOT NULL,
+     count         INTEGER NOT NULL,
+     PRIMARY KEY (number_1, number_2, limit_of_list, str1, str2)
+  ) 
