@@ -23,7 +23,12 @@ Run this command in rest directory for launch springboot application
 ```bash
 mvn spring-boot:run
 ```
-## 3. Run JUnit Tests
+## 3. Swagger
+OpenAPI definition
+```
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+``` 
+## 4. Run JUnit Tests
 Run this command in root project
 
 ```bash
