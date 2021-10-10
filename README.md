@@ -19,7 +19,7 @@ Run this command in root project for build application
 ```bash
 mvn clean install -Pdev -DskipTests
 ```
-Run this command in root project for launch springboot application
+Run this command in rest directory for launch springboot application
 ```bash
 mvn spring-boot:run
 ```
