@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  db:
+    image: mariadb:10.5.12
+    volumes:
+      - db_data:/var/lib/mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: mdpmariadb
+      MARIADB_DATABASE: fizzbuzz
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  fizzbuzz:
+    depends_on:
+      db:
+        condition: service_healthy
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - "db:database"
+    restart: always
+
+volumes:
+  db_data: {}
