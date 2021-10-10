@@ -47,12 +47,12 @@ class FizzBuzzControllerTest {
 
 	@Test
 	void test_fizzbuzz() {
-		final List<Object> fizzbuzz = Arrays.asList("1", 2);
+		final List<String> fizzbuzz = Arrays.asList("1", "2");
 		Mockito.when(fizzBuzzService.getFizzBuzzList(Mockito.any(PageDto.class))).thenReturn(fizzbuzz);
 
-		ResponseEntity<List<Object>> response = restTemplate.exchange(
+		ResponseEntity<List<String>> response = restTemplate.exchange(
 				baseUrl + "fizzbuzz?int1=4&int2=5&str1=fizz&str2=toto&limit=102", HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<Object>>() {
+				new ParameterizedTypeReference<List<String>>() {
 				});
 
 		Mockito.verify(fizzBuzzService).getFizzBuzzList(pageCaptor.capture());
@@ -61,5 +61,4 @@ class FizzBuzzControllerTest {
 		Assertions.assertEquals("toto", pageCaptor.getValue().getStr2());
 		Assertions.assertEquals(102, pageCaptor.getValue().getLimit());
 	}
-
 }

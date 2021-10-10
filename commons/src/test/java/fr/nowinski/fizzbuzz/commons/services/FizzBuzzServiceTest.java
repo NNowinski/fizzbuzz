@@ -56,7 +56,7 @@ class FizzBuzzServiceTest {
 		final int q2 = limit / int2 - q;
 		final PageDto page = new PageDto(int1, int2, str1, str2, limit);
 
-		final List<Object> fizzbuzz = this.fizzBuzzService.getFizzBuzzList(page);
+		final List<String> fizzbuzz = this.fizzBuzzService.getFizzBuzzList(page);
 		logger.info("int1 {}, int2 {}, limit {}", int1, int2, limit);
 
 		Assertions.assertNotNull(fizzbuzz);

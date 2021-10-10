@@ -19,6 +19,6 @@ public interface FizzBuzzService {
 	 * @param page
 	 * @return list of strings
 	 */
-	public List<Object> getFizzBuzzList(final PageDto page);
+	public List<String> getFizzBuzzList(final PageDto page);
 
 }

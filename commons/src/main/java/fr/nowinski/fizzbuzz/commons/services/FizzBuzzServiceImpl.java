@@ -16,12 +16,12 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 	private StatisticRepository statisticRepository;
 
 	@Override
-	public List<Object> getFizzBuzzList(final PageDto page) {
+	public List<String> getFizzBuzzList(final PageDto page) {
 		// save stats
 		this.statisticRepository.save(
 				this.statisticRepository.findById(page.toStatistic().getId()).orElseGet(page::toStatistic).addCount());
 
-		final List<Object> list = new ArrayList<>();
+		final List<String> list = new ArrayList<>();
 		for (int i = 1; i <= page.getLimit(); i++) {
 			final boolean isDivisibleByInt1 = i % page.getInt1() == 0;
 			final boolean isDivisibleByInt2 = i % page.getInt2() == 0;
@@ -32,7 +32,7 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 			} else if (isDivisibleByInt2) {
 				list.add(page.getStr2());
 			} else {
-				list.add(i);
+				list.add(String.valueOf(i));
 			}
 
 		}
