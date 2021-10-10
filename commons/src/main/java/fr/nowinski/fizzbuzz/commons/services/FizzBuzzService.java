@@ -3,8 +3,12 @@ package fr.nowinski.fizzbuzz.commons.services;
 import java.util.List;
 
 import fr.nowinski.fizzbuzz.commons.dto.PageDto;
-import fr.nowinski.fizzbuzz.commons.dto.StatisticDto;
 
+/**
+ * 
+ * Service for fizzbuzz list
+ *
+ */
 public interface FizzBuzzService {
 
 	/**
@@ -16,12 +20,5 @@ public interface FizzBuzzService {
 	 * @return list of strings
 	 */
 	public List<Object> getFizzBuzzList(final PageDto page);
-
-	/**
-	 * The most frequent request has been
-	 * 
-	 * @return statisticsdto
-	 */
-	public List<StatisticDto> getStatistics();
 
 }

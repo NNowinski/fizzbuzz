@@ -29,7 +29,7 @@ public class StatisticDto implements Serializable {
 		final StatisticId id = statistic.getId();
 		this.str1 = id.getStr1();
 		this.str2 = id.getStr2();
-		this.limit = id.getLimit();
+		this.limit = id.getLimitOfList();
 		this.int1 = id.getInt1();
 		this.int2 = id.getInt2();
 		this.numberOfHits = statistic.getCount();

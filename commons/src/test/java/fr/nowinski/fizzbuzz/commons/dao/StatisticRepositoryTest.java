@@ -50,12 +50,12 @@ class StatisticRepositoryTest {
 		this.statisticRepository.save(new Statistic(new StatisticId(1, 4, "toto", "tata", 5)).addCount().addCount());
 		this.statisticRepository.save(new Statistic(new StatisticId(1, 2, "toto", "titi", 1)));
 
-		List<StatisticDto> stats = this.statisticRepository.getMaxQuaryUse();
+		List<StatisticDto> stats = this.statisticRepository.getMaxQueryUse();
 
 		Assertions.assertNotNull(stats);
 		Assertions.assertEquals(1, stats.size());
 		Assertions.assertEquals(id.getInt2(), stats.get(0).getInt2());
-		Assertions.assertEquals(id.getLimit(), stats.get(0).getLimit());
+		Assertions.assertEquals(id.getLimitOfList(), stats.get(0).getLimit());
 		Assertions.assertEquals(3, stats.get(0).getNumberOfHits());
 	}
 
@@ -67,7 +67,7 @@ class StatisticRepositoryTest {
 		this.statisticRepository.save(new Statistic(id2).addCount().addCount().addCount());
 		this.statisticRepository.save(new Statistic(new StatisticId(1, 2, "toto", "titi", 1)));
 
-		List<StatisticDto> stats = this.statisticRepository.getMaxQuaryUse();
+		List<StatisticDto> stats = this.statisticRepository.getMaxQueryUse();
 
 		Assertions.assertNotNull(stats);
 		Assertions.assertEquals(2, stats.size());

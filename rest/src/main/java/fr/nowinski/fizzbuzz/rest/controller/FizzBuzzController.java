@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.nowinski.fizzbuzz.commons.dto.PageDto;
-import fr.nowinski.fizzbuzz.commons.dto.StatisticDto;
 import fr.nowinski.fizzbuzz.commons.services.FizzBuzzService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,6 +18,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+/**
+ * 
+ * Controller for generate list
+ *
+ */
 @RestController
 public class FizzBuzzController {
 
@@ -37,20 +41,8 @@ public class FizzBuzzController {
 			@RequestParam(defaultValue = "buzz", required = true) String str2,
 			@RequestParam(defaultValue = "100", required = true) Integer limit) {
 
-		final PageDto page = new PageDto(int1, int2, str1, str2, limit);
+		return fizzService.getFizzBuzzList(new PageDto(int1, int2, str1, str2, limit));
 
-		return fizzService.getFizzBuzzList(page);
-
-	}
-
-	@Operation(summary = "Get the parameters corresponding to the most used request, as well as the number of hits for this request")
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "The most frequent request has been", content = {
-					@Content(mediaType = "application/json", schema = @Schema(implementation = StatisticDto.class)) }) })
-	@GetMapping("/statistics")
-	@ResponseStatus(HttpStatus.OK)
-	public List<StatisticDto> getStatistic() {
-		return this.fizzService.getStatistics();
 	}
 
 }

@@ -21,10 +21,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import fr.nowinski.fizzbuzz.commons.dto.PageDto;
-import fr.nowinski.fizzbuzz.commons.services.FizzBuzzService;
+import fr.nowinski.fizzbuzz.commons.dto.StatisticDto;
+import fr.nowinski.fizzbuzz.commons.services.StatisticService;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class FizzBuzzControllerTest {
+class StatisticControllerTest {
 
 	@LocalServerPort
 	private int port;
@@ -33,7 +34,7 @@ class FizzBuzzControllerTest {
 	private TestRestTemplate restTemplate;
 
 	@MockBean
-	private FizzBuzzService fizzBuzzService;
+	private StatisticService statisticService;
 
 	@Captor
 	private ArgumentCaptor<PageDto> pageCaptor;
@@ -46,20 +47,21 @@ class FizzBuzzControllerTest {
 	}
 
 	@Test
-	void test_fizzbuzz() {
-		final List<Object> fizzbuzz = Arrays.asList("1", 2);
-		Mockito.when(fizzBuzzService.getFizzBuzzList(Mockito.any(PageDto.class))).thenReturn(fizzbuzz);
+	void test_statistics() {
+		final StatisticDto stat = new StatisticDto();
+		stat.setStr1("toto");
+		stat.setNumberOfHits(5);
+		final List<StatisticDto> stats = Arrays.asList(stat);
+		Mockito.when(statisticService.getStatistics()).thenReturn(stats);
 
-		ResponseEntity<List<Object>> response = restTemplate.exchange(
-				baseUrl + "fizzbuzz?int1=4&int2=5&str1=fizz&str2=toto&limit=102", HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<Object>>() {
+		ResponseEntity<List<StatisticDto>> response = restTemplate.exchange(baseUrl + "statistics", HttpMethod.GET,
+				null, new ParameterizedTypeReference<List<StatisticDto>>() {
 				});
 
-		Mockito.verify(fizzBuzzService).getFizzBuzzList(pageCaptor.capture());
 		Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-		Assertions.assertEquals(4, pageCaptor.getValue().getInt1());
-		Assertions.assertEquals("toto", pageCaptor.getValue().getStr2());
-		Assertions.assertEquals(102, pageCaptor.getValue().getLimit());
+		Assertions.assertEquals(stats.size(), response.getBody().size());
+		Assertions.assertEquals(stats.get(0).getStr1(), response.getBody().get(0).getStr1());
+		Assertions.assertEquals(stats.get(0).getNumberOfHits(), response.getBody().get(0).getNumberOfHits());
 	}
 
 }

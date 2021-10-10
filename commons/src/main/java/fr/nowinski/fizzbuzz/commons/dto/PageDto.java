@@ -30,10 +30,11 @@ public class PageDto implements Serializable {
 		this.limit = limit;
 	}
 
-	public boolean validatePage() {
-		return this.str1 == null && this.str2 == null && this.limit == null && this.int1 == null && this.int2 == null;
-	}
-
+	/**
+	 * to convert a pagedto to statistic
+	 * 
+	 * @return statistic
+	 */
 	public Statistic toStatistic() {
 		return new Statistic(this.int1, this.int2, this.str1, this.str2, this.limit);
 	}

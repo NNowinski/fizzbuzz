@@ -6,12 +6,11 @@
 		<groupId>fr.nowinski.fizzbuzz</groupId>
 		<artifactId>parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	
 	<artifactId>rest</artifactId>
 	<name>rest</name>
-	<description>Test lbc</description>
+	<description>Rest part of fizzbuzz</description>
 	
 	<properties>
 		<java.version>17</java.version>
@@ -85,5 +84,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>fizzbuzz-app</finalName>
 	</build>
 </project>
