@@ -7,6 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * dto to manipulate the parameter send by the controller
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,6 +27,15 @@ public class PageDto implements Serializable {
 	private Integer int2;
 	private Integer limit;
 
+	/**
+	 * initialize à pagedto
+	 * 
+	 * @param int1  first int
+	 * @param int2  second int
+	 * @param str1  first string
+	 * @param str2  second string
+	 * @param limit limit of list string
+	 */
 	public PageDto(Integer int1, Integer int2, String str1, String str2, Integer limit) {
 		this.int1 = int1;
 		this.int2 = int2;

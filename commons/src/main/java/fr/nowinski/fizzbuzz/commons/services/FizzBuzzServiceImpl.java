@@ -17,10 +17,10 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 
 	@Override
 	public List<String> getFizzBuzzList(final PageDto page) {
-		// save stats
+		// save stat
 		this.statisticRepository.save(
 				this.statisticRepository.findById(page.toStatistic().getId()).orElseGet(page::toStatistic).addCount());
-
+		// generate list
 		final List<String> list = new ArrayList<>();
 		for (int i = 1; i <= page.getLimit(); i++) {
 			final boolean isDivisibleByInt1 = i % page.getInt1() == 0;

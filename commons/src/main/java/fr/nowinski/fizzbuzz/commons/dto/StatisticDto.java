@@ -3,11 +3,16 @@ package fr.nowinski.fizzbuzz.commons.dto;
 import java.io.Serializable;
 
 import fr.nowinski.fizzbuzz.commons.model.Statistic;
-import fr.nowinski.fizzbuzz.commons.model.StatisticId;
+import fr.nowinski.fizzbuzz.commons.model.id.StatisticId;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * dto for expose the statistic information
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,8 +28,16 @@ public class StatisticDto implements Serializable {
 	private Integer int1;
 	private Integer int2;
 	private Integer limit;
+	/**
+	 * number or use request
+	 */
 	private Integer numberOfHits;
 
+	/**
+	 * initialize à statisticdto with a statistic entity
+	 * 
+	 * @param statistic statistic entity
+	 */
 	public StatisticDto(Statistic statistic) {
 		final StatisticId id = statistic.getId();
 		this.str1 = id.getStr1();

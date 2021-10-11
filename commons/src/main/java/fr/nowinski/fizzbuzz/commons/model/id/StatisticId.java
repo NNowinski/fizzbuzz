@@ -1,4 +1,4 @@
-package fr.nowinski.fizzbuzz.commons.model;
+package fr.nowinski.fizzbuzz.commons.model.id;
 
 import java.io.Serializable;
 
@@ -9,6 +9,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * compose id for statistic entity
+ *
+ */
 @Embeddable
 @Getter
 @Setter

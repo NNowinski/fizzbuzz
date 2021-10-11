@@ -5,10 +5,16 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import fr.nowinski.fizzbuzz.commons.model.id.StatisticId;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * Entity for save the statistic query
+ *
+ */
 @Entity
 @Getter
 @Setter
@@ -21,7 +27,7 @@ public class Statistic implements Serializable {
 	private static final long serialVersionUID = 758120552964978270L;
 
 	/**
-	 * initialize Statistic with paramters
+	 * initialize Statistic with query paramters
 	 * 
 	 * @param int1  first int
 	 * @param int2  second int

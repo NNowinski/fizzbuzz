@@ -15,7 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import fr.nowinski.fizzbuzz.commons.dto.StatisticDto;
 import fr.nowinski.fizzbuzz.commons.model.Statistic;
-import fr.nowinski.fizzbuzz.commons.model.StatisticId;
+import fr.nowinski.fizzbuzz.commons.model.id.StatisticId;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
